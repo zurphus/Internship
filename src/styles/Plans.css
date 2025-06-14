@@ -1,0 +1,95 @@
+.plans{
+
+    .plans__content{
+        box-sizing: unset;
+        max-width: 1400px;
+        margin: auto;
+        padding: 30px 32px;
+
+        h2{
+            margin: 0 0 30px;
+        }
+        .plans__subscription{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+
+            .plans__subscription__col{
+                border-radius: 25px;
+                padding: 25px;
+                border: 1px solid #eee;
+
+                .plan__price{
+                    display: flex;
+                    gap: 3px;
+
+                    .plan__price__dollar{
+                        margin-top: 9px;
+                        font-size: 1.2rem;
+                    }
+                    h3{
+                        font-size: 4rem;
+                    }
+                    .plan__price__frequency{
+                        margin-top: 12px;
+                        margin-left: 3px;
+                        font-weight: 500;
+                    }
+                }
+                .plan__type{
+                    color: #989898;
+                    font-weight: 500;
+                    /* margin-top: -5px; */
+                }
+                .plan__features{
+                    display: grid;
+                    gap: 5px;
+                    margin: 35px 0;
+
+                    .plan__feature{
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        .plan__feature__icon{
+                            display: grid;
+                            place-items: center;
+                            width: 22px;
+                            height: 22px;
+                            background-color: #EAE6F2;
+                            border-radius: 50px;
+
+                            *{
+                                width: 12px;
+                                color: #320580;
+                            }
+                        }
+                        p{
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+                a{
+                    margin-top: 100px;
+                    margin-bottom: 0;
+                    border-radius: 50px;
+                    font-size: 0.9rem;
+                    width: 100% !important;
+                    max-width: unset;
+                }
+            }
+        }        
+    }
+}
+
+.plans__title{
+    padding: 25px 0;
+    border-bottom: 1px solid #eee;
+
+    .plans__title__content{
+        box-sizing: unset;
+        max-width: 1400px;
+        margin: auto;
+        padding: 0 32px;
+    }
+}

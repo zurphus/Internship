@@ -1,0 +1,112 @@
+.search-wrapper{
+    width: 100%;
+    border-bottom: 1px solid #eeeeee;
+}
+.search-container{
+    box-sizing: unset;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1400px;
+    margin: auto;
+    padding: 25px 32px;
+    /* margin-left: 45px; */
+
+    .search__icon{
+        position: absolute;
+        top: 50%;
+        left: 47px;
+        transform: translateY(-50%);
+        color: rgb(58, 58, 58);
+    }
+    input{
+        /* position: relative; */
+        box-sizing: border-box;
+        padding: 14px 16px 14px 40px;
+        /* margin-left: 45px; */
+        width: 100%;
+        height: 100%;
+        max-width: 450px;
+        border-radius: 9999px;
+        background: #F1F1F3;
+        outline: none;
+        border: none;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .search-results{
+        position: absolute;
+        top: 100px;
+        left: 0;
+        /* transform: translate(0, 290%); */
+
+        display: grid;
+
+        width: 100%;
+        max-width: 450px;
+        max-height: 450px;
+
+        padding-top: 50px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 3px #b6b6b6;
+        border-radius: 25px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        z-index: 999;
+
+        span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            margin-left: 25px;
+            font-weight: 700;
+        }
+
+        .search-result{
+            display: grid;
+            grid-template-columns: 60px 350px;
+            align-items: center;
+            
+            width: 100%;
+            border-top: 1px solid #eeeeee;
+            padding: 15px;
+            gap: 15px;
+            cursor: pointer;
+
+            img{
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+
+.burger{
+    box-sizing: unset;
+    display: grid;
+    /* place-items: center; */
+    gap: 5px;
+    width: 25px;
+    height: 15px;
+    padding: 10px 5px;
+    background-color: transparent;
+    border: none;
+
+    .burger__line{
+        height: 2px;
+        border: 5px;
+        border-radius: 10px;
+        background-color: black;
+    }
+}

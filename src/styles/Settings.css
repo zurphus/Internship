@@ -1,0 +1,41 @@
+.settings{
+    
+    .settings__title-wrap{
+        box-sizing: unset;
+        max-width: 1400px;
+        padding: 25px 0;
+        margin: auto;
+        border-bottom: 1px solid #eeeeee;
+
+        h2{
+            font-size: 2rem;
+        }
+    }
+    .settings__login{
+        display: grid;
+        place-items: center;
+
+        p{
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin: 0 0 1.5rem;
+        }
+    }
+    .settings__info{
+        display: grid;
+        gap: 10px;
+        max-width: 1400px;
+        padding: 25px 0;
+        margin: auto;
+        border-bottom: 1px solid #eeeeee;
+
+        p{
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.settings__content{
+    padding: 0 32px;
+}

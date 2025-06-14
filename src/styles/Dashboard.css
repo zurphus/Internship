@@ -1,0 +1,46 @@
+.dashboard{
+    position: relative;
+    /* margin-left: 230px; */
+
+    p{
+        color: var(--light-gray);
+        font-size: 0.9rem;
+    }
+    .dashboard__heading{
+        width: 100%;
+        padding: 24px 32px;
+        /* border-top: 1px solid #eeeeee; */
+        border-bottom: 1px solid #eeeeee;
+
+        div{
+            max-width: 1400px;
+            margin: auto;
+
+            h2{
+                font-size: 2rem;
+            }
+        } 
+    }
+    .dashboard__selected{
+        width: 100%;
+        padding: 40px 32px;
+        /* border-top: 1px solid #eeeeee; */
+
+        div{
+            max-width: 1400px;
+            margin: auto;
+        }
+        p{
+            margin: 0.5rem 0;
+        }
+    }
+    .dashboard__carousel{
+        box-sizing: unset;
+        max-width: 1400px;
+        margin: auto;
+        overflow: hidden;
+        padding: 0 32px;
+        /* padding-left: 25px; */
+    }
+}
+

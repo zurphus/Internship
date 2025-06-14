@@ -1,0 +1,86 @@
+.movie{
+    
+
+    .movie__content{
+        display: grid;
+        grid-template-columns: 1fr 250px;
+        gap: 35px;
+        max-width: 1400px;
+        padding: 0 0 0 32px;
+        margin: auto;
+
+        .movie__title{
+            width: 100%;
+            padding: 25px 0;
+            border-bottom: 1px solid #eee;
+
+            h1{
+                margin-bottom: 7px;
+                font-weight: 600;
+            }
+            .movie__subtitle{
+                color: #929292;
+                /* margin-top: 10px; */
+            }
+        }
+        
+        .movie__info{
+            display: grid;
+            grid-template-columns: 100px 100px;
+            column-gap: 2vw;
+            row-gap: 13px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+
+            .movie__info__col{
+                display: flex;
+                gap: 7px;
+                align-items: center;
+
+                span{
+                    font-size: 0.8rem;
+                    white-space: nowrap;
+                }
+            }
+        }
+        .movie__details__favorites{
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #0365F2;
+            background-color: transparent;
+            border: none;
+            font-size: 1.1rem;
+            margin: 1rem 0 2rem;
+
+            .movie__details__favorites-icon{
+                color: #0365F2;
+                width: 17px;
+                height: 17px;
+                /* height: 50px; */
+            }
+        }
+        .movie__details__tags{
+            display: flex;
+            gap: 15px;
+
+            .movie__details__tag{
+                padding: 15px 20px;
+                border-radius: 3px;
+                background-color: #F1F6F4;
+            }
+        }
+        .movie__details__content{
+            display: grid;
+            gap: 15px;
+        }
+        .movie__details{
+            margin-top: 24px;
+        }
+    }
+    .movie__img{
+        margin-top: 25px;
+        border-radius: 15px;
+    }
+}

@@ -1,0 +1,111 @@
+.auth-modal{
+    /* display: none; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: grid;
+    place-items: center;
+    gap: 15px;
+    padding: 45px 32px 80px 32px;
+    border-radius: 15px;
+    min-width: 370px;
+
+    background-color: #fff;
+
+    z-index: 2001;
+
+    h3{
+        font-size: 2rem;
+    }
+    .auth-modal__close-btn{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .auth-modal__input-wrap{
+        display: grid;
+        gap: 5px;
+    }
+    .forgot-password-wrap{
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+
+        button{
+            background-color: transparent;
+            border: none;
+            color: #320580;
+        }
+    }
+    .auth-modal__login-btn{
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        padding: 10px 35px;
+        border: 2px solid #d5d5d5;
+        background-color: transparent;
+        border-radius: 8px;
+        transition: all 0.3s;
+
+        &:hover{
+            transform: translateY(-2px);
+        }
+    }
+    form{
+        display: grid;
+        gap: 20px;
+        width: 100%;
+
+        label{
+            color: #667085;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        input{
+            padding: 10px 15px;
+            border: 0.5px solid #EBEBEB;
+            border-radius: 8px;
+        }
+        button{
+            margin: 0;
+            border-radius: 30px;
+        }
+    }
+    p{
+        font-size: 0.8rem;
+
+        button{
+            background-color: transparent;
+            color: #320580;
+            text-decoration: underline;
+            border: none;
+        }
+    }
+    .auth-modal__or-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* gap: 5%; */
+        width: 100%;
+
+        div{
+            width: 37%;
+            height: 1px;
+            background-color: #dadada;
+        }
+        p{
+            color: #667085;
+        }
+    }
+}
+.auth-modal-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0000007a;
+    z-index: 2000;
+}

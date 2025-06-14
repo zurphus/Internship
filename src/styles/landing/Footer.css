@@ -1,0 +1,168 @@
+/* Footer CTA */
+
+footer {
+  background: radial-gradient(
+    circle at 0% -30%,
+    #a12a91,
+    rgba(33, 13, 123, 0.83),
+    transparent,
+    transparent,
+    transparent
+  );
+  background-color: black;
+  margin-top: 120px;
+  color: white;
+}
+
+.cta__svg {
+  fill: #f9f9fb;
+  width: 100%;
+}
+
+.cta__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta__widget {
+  margin-bottom: 36px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta__widget__logo {
+  padding: 4px 12px;
+  background-color: rgb(38, 38, 38);
+  border-radius: 12px;
+  margin-right: 8px;
+}
+
+.cta__title {
+  font-size: 100px;
+  max-width: 569px;
+  width: 100%;
+  line-height: 100px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cta__para {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+  opacity: 0.5;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.cta__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: white;
+  border-radius: 12px;
+  padding: 16px 28px;
+  font-weight: 600;
+  background-color: #1a1a1a;
+  border: none;
+  transition: 300ms;
+}
+
+.cta__button:hover {
+  scale: 1.1;
+}
+
+.cta__button__icon {
+  width: 14px;
+  height: auto;
+}
+
+/* Footer Links */
+
+#links {
+  width: 100%;
+  border-top: 1px #ffffff1f solid;
+  border-bottom: 1px #ffffff1f solid;
+}
+
+.links__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.links__logo {
+  width: 132px;
+}
+
+.links__list {
+  display: flex;
+  gap: 30px;
+}
+
+.links__link {
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: not-allowed;
+}
+
+.links__link__icon {
+  width: 14px;
+  margin-right: 12px;
+}
+
+/* Footer Copyright */
+
+.copyright__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.copyright__form {
+  display: flex;
+  gap: 12px;
+}
+
+.copyright__form__input {
+  padding: 20px 28px;
+  background: #ffffff11;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+  width: 100%;
+}
+
+.copyright__form__button {
+  padding: 18px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  background: #ffffff11;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  cursor: not-allowed;
+}
+
+
+.copyright__text {
+  color: #e5e6e6;
+  font-size: 14px;
+}

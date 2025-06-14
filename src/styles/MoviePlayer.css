@@ -1,0 +1,112 @@
+.player{
+
+    .player__content{
+        max-width: 1400px;
+        margin: auto;
+        padding-bottom: 85px;
+
+        .player__title{
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        p{
+            margin: 2rem 0;
+        }
+
+        .player__bar{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            padding: 0 40px ;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            background-color: #042330;
+            color: #fff;
+
+            z-index: 101;
+
+            p{
+                margin: 0;
+            }
+            .player__bar__info{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                div{
+                    display: grid;
+                    gap: 3px;
+                }
+                h3{
+                    font-size: 0.9rem;
+                    font-weight: 300;
+                }
+                p{
+                    font-size: 0.8rem;
+                    font-weight: 300;
+                    white-space: nowrap;
+                    color: #AFBEC5;
+                }
+                img{
+                    width: 35px;
+                    object-fit: contain;
+                }
+            }
+            .player__bar__controls{
+                margin: auto;
+                user-select: none;
+                /* -webkit-user-drag: none; */
+            }
+            .player__bar__timer{
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                max-width: 422px;
+                margin: auto;
+
+                p{
+                    font-size: 0.9rem;
+                    font-weight: 300;
+                    user-select: none;
+                }
+                .player__bar__timer__line{
+                    position: relative;
+                    width: 350px;
+                    height: 2px;
+                    background-color: #AFBEC5;
+                    border-radius: 5px;
+                }
+                .player__bar__timer__line-fill::after{
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translate(50%, -50%);
+                
+                    width: 10px;
+                    height: 10px;
+                    background-color: #f00;
+
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+.player__bar-drag{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* pointer-events: none; */
+    z-index: 103;
+    /* background-color: #042330; */
+}

@@ -1,0 +1,82 @@
+/* Testimonials */
+
+.testimonials__row {
+  border-radius: 50px;
+  border: 1px solid rgb(229, 231, 235);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(/assets/world-map.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: rgb(246, 246, 246);
+}
+
+.testimonials__title {
+  font-size: 52px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.testimonials__widget {
+  background-color: #28027c1f;
+  padding: 5px 13px 3px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  line-height: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  width: fit-content;
+  color: #28027c;
+}
+
+.testimonials__widget__emoji {
+  font-size: 6px;
+  opacity: 0.6;
+}
+
+.testimonials__widget__description {
+  opacity: 0.6;
+}
+
+.testimonials__list {
+  display: flex;
+  gap: 40px;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial__img {
+  width: 77px;
+  height: 77px;
+  margin-bottom: 8px;
+}
+
+.testimonial__name {
+  font-size: 15px;
+  color: #1e2227;
+  font-weight: 700;
+}
+
+.testimonial__occupation {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+}
+
+.testimonial__para {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 280px;
+  text-align: center;
+}
