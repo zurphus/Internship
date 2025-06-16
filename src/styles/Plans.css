@@ -93,3 +93,59 @@
         padding: 0 32px;
     }
 }
+.faq{
+    box-sizing: unset;
+    display: grid;
+    gap: 10px;
+    max-width: 1400px;
+    margin: auto;
+    padding: 45px 32px 80px;
+
+    .accordion{
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        border-radius: 25px;
+        /* height: 6rem; */
+        cursor: pointer;
+        /* overflow: hidden; */
+
+        .accordion__header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+
+            h4{
+                font-size: 1.3rem;
+                font-weight: 500;
+                margin: 0;
+            }
+            svg{
+                width: 25px;
+                height: 25px;
+                color: var(--gray);
+            }
+        }
+        .accordion__description{
+            /* margin-top: 1.2rem; */
+            /* padding: 1.2rem 0; */
+        }
+    }
+}
+.accordion-open{
+    height: fit-content !important;
+    max-height: fit-content !important;
+}
+
+
+@media screen and (max-width: 650px) {
+    .plans{
+
+        .plans__content{
+
+            .plans__subscription{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

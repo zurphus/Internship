@@ -8,7 +8,8 @@
     width: 230px;
     padding: 25px 13px;
     border-right: 1px solid #eeeeee;
-    z-index: 50;
+    z-index: 1000;
+    background-color: #FFFFFF;
 
     transition: all 0.3s;
 
@@ -68,6 +69,22 @@
         margin-left: 0;
     }
 }
-.sidebar-mobile{
+.sidebar-open{
     transform: translateX(0%);
+}
+
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0000007a;
+    z-index: 98;
+    transition: background-color 0.3s;
+}
+.overlay-closed{
+    pointer-events: none;
+    background-color: transparent;
 }
