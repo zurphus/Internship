@@ -13,7 +13,7 @@ app.post('/createCheckoutSession', async (req, res) => {
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: 'https://internship-sooty-one.vercel.app//success?session_id={CHECKOUT_SESSION_ID}',
+      success_url: 'https://internship-sooty-one.vercel.app/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://internship-sooty-one.vercel.app/cancel',
     })
 
