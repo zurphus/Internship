@@ -25,6 +25,8 @@ const accordionData = [
   }
 ]
 
+const stripePromise = loadStripe('pk_test_51RZsOCP07fN40ljCsKT7ImGPaZZ1XSITv6izpdLDiK8yA2eEAci6lRo6vC8h4Ze51HuL7VItVVh49kA3eNMFTjd400jrAtOtYf')
+
 const Plans = () => {
 
   const [activeIndex, setActiveIndex] = useState(null)
@@ -39,7 +41,7 @@ const Plans = () => {
 
   async function handleSubscribe(priceId) {
     try {
-      const response = await fetch('https://us-central1-yourproject.cloudfunctions.net/createCheckoutSession', {
+      const response = await fetch('https://us-central1-yourproject.cloudfunctions.net/api/createCheckoutSession', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ priceId }),
