@@ -53,7 +53,8 @@ const Plans = () => {
 
       if (error) alert(error.message)
     } catch (error) {
-      alert("failed, error")
+      alert("failed, error", error)
+      console.log(error)
     }
   }
 
