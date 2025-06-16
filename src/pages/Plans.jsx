@@ -41,7 +41,7 @@ const Plans = () => {
 
   async function handleSubscribe(priceId) {
     try {
-      const response = await fetch('https://us-central1-yourproject.cloudfunctions.net/api/createCheckoutSession', {
+      const response = await fetch('https://us-central1-hollywood-ai-6bb5b.cloudfunctions.net/createCheckoutSession', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ priceId }),
