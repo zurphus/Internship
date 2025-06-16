@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 
 import loginImg from "../assets/login.webp"
-import { HiLightningBolt } from "react-icons/hi";
 
 const Settings = () => {
 
@@ -36,7 +35,7 @@ const Settings = () => {
             <div className="settings__info">
               <p>Your Subscription Plan</p>
               <span>Basic</span>
-              <Link to="/plans" className='cta-btn '>Upgrade<HiLightningBolt /></Link>
+              <Link to="/plans" className='cta'>Upgrade</Link>
             </div>
             <div className="settings__info">
               <p>Email</p>

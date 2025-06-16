@@ -41,20 +41,6 @@ const SearchBar = () => {
     movie.title.toLowerCase().includes(query.toLowerCase())
   )
 
-  const [openSidebar, setOpenSidebar] = useState(false)
-
-  const toggleSidebar = () => {
-    const sidebar = document.querySelector('.sidebar')
-    if(!openSidebar){
-      sidebar.classList.add('sidebar-open')
-      setOpenSidebar(true)
-    } else{
-      sidebar.classList.remove('sidebar-open')
-      setOpenSidebar(false)
-    }
-    
-  }
-
   return (
     <div className="search-wrapper">
         <div className="search-container">
@@ -93,14 +79,11 @@ const SearchBar = () => {
             )}
             {
               width <= 768 && (
-                <>
-                  <button onClick={toggleSidebar} className="burger">
-                    <div className="burger__line"></div>
-                    <div className="burger__line"></div>
-                    <div className="burger__line"></div>
-                  </button>
-                  <div onClick={toggleSidebar} className={`${openSidebar ? "overlay-open" : "overlay-closed"} overlay`}></div>
-                </>
+                <button className="burger">
+                  <div className="burger__line"></div>
+                  <div className="burger__line"></div>
+                  <div className="burger__line"></div>
+                </button> 
               )
             }
             

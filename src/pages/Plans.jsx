@@ -1,60 +1,11 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import "../styles/Plans.css"
 import SearchBar from '../components/Searchbar'
 import Sidebar from '../components/Sidebar'
 
-import { loadStripe } from '@stripe/stripe-js'
-
 import { FaCheck } from "react-icons/fa6";
-import { LuPlus } from "react-icons/lu";
-
-
-
-const accordionData = [
-  {
-    question: 'What is Hollywood AI?',
-    answer: 'HollywoodAI is designed to help you get high-quality summaries of your favourite movies instantly, without breaking a sweat. With our intuitive interface and powerful features, you can easily digest any movie in just minutes instead of hours.'
-  },
-  {
-    question: 'How much does Hollywood AI cost?',
-    answer: 'Get summaries of your favourite movies on your smartphone, tablet or laptop, all for one fixed monthly or yearly fee. Plans range from $19 per month to $190 per year. No extra costs, no contracts.'
-  },
-  {
-    question: 'What can I watch on Hollywood AI?',
-    answer: 'Hollywood AI has an extensive library of feature films. Watch as much as you want, at any time that you want.'
-  }
-]
 
 const Plans = () => {
-
-  const [activeIndex, setActiveIndex] = useState(null)
-  const refs = useRef([])
-
-  const toggleAccordion = index => {
-    setActiveIndex(prevIndex => (prevIndex === index ? null : index))
-  }
-
-  const monthlyPriceId = 'price_monthly123'
-  const yearlyPriceId = 'price_yearly456'
-
-  async function handleSubscribe(priceId) {
-    try {
-      const response = await fetch('https://us-central1-yourproject.cloudfunctions.net/createCheckoutSession', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId }),
-      })
-
-      const { sessionId } = await response.json()
-      const stripe = await stripePromise
-      const { error } = await stripe.redirectToCheckout({ sessionId })
-
-      if (error) alert(error.message)
-    } catch (error) {
-      alert('Failed to create checkout session')
-    }
-  }
-
   return (
     <div className='plans page'>
       <SearchBar />
@@ -97,7 +48,7 @@ const Plans = () => {
                 <p className="plan__feature__text">2 Supported Devices</p>
               </div>
             </div>
-            <button onClick={() => handleSubscribe(monthlyPriceId)} className='cta-btn'>Choose Plan</button>
+            <a className='cta-btn'>Choose Plan</a>
           </div>
           <div className="plans__subscription__col">
             <div className="plan__price">
@@ -128,37 +79,10 @@ const Plans = () => {
                 <p className="plan__feature__text">3 Supported Devices</p>
               </div>
             </div>
-            <button onClick={() => handleSubscribe(yearlyPriceId)} className='cta-btn'>Choose Plan</button>
+            <a className='cta-btn'>Choose Plan</a>
           </div>
         </div>
       </div>
-      <div className="faq">
-      {accordionData.map((item, index) => (
-        <div key={index} className="accordion">
-          <div
-            className="accordion__header"
-            onClick={() => toggleAccordion(index)}
-            // style={{
-            //   height: activeIndex === index ? `${refs.current[index]?.scrollHeight + 96}px` : 0
-            // }}
-          >
-            <h4>{item.question}</h4>
-            <LuPlus />
-          </div>
-          <div
-            ref={el => (refs.current[index] = el)}
-            className="accordion__description"
-            style={{
-              height: activeIndex === index ? refs.current[index]?.scrollHeight : 0,
-              overflow: 'hidden',
-              transition: 'height 0.5s ease'
-            }}
-          >
-            <p>{item.answer}</p>
-          </div>
-        </div>
-      ))}
-    </div>
     </div>
   )
 }
