@@ -53,7 +53,7 @@ const Plans = () => {
 
       if (error) alert(error.message)
     } catch (error) {
-      alert('Failed to create checkout session')
+      console.log('Error', error.message)
     }
   }
 
