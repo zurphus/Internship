@@ -1,4 +1,5 @@
 .favorites-all{
+    margin-top: 30px;
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
