@@ -54,7 +54,7 @@ const MovieDetails = () => {
         <Sidebar />
         <SearchBar />
         <div className="movie__content">
-          <div>
+          <div className='movie__col1'>
             {
               movie ? (
                 <>
@@ -130,7 +130,7 @@ const MovieDetails = () => {
           
           {
             movie ? (
-              <img className='movie__img' src={movie.imageLink} alt="img" />
+              <img className='movie__img movie__col2' src={movie.imageLink} alt="img" />
             ) : (
               <div></div>
             )

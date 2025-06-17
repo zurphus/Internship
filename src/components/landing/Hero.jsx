@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/landing/Hero.css'
+import { FaPlay } from "react-icons/fa";
 
 const Hero = () => {
   return (
@@ -22,7 +23,7 @@ const Hero = () => {
         </p>
         <a className="header__button">
           <div className="header__button__iconWrapper">
-            <i className="fa-solid fa-play header__button__icon"></i>
+            <FaPlay />
           </div>
           <span className="header__button__text">
             See how it works &nbsp;

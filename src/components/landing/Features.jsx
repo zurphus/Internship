@@ -1,5 +1,13 @@
 import React from 'react'
 import '../../styles/landing/Features.css'
+import { FaPen } from "react-icons/fa";
+import { FaCirclePlay } from "react-icons/fa6";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { FaMobile } from "react-icons/fa";
+import { FaShield } from "react-icons/fa6";
+import { FaHandsHoldingCircle } from "react-icons/fa6";
+
+
 
 const Features = () => {
   return (
@@ -15,7 +23,7 @@ const Features = () => {
              <div className="features__list">
                <div className="feature">
                 <div className="feature__iconWrapper">
-                  <i className="feature__icon fa-solid fa-pen"></i>
+                  <FaPen />
                 </div>
                 <div className="feature__text">
                   <h4 className="feature__text__title">
@@ -28,7 +36,7 @@ const Features = () => {
                </div>
                <div className="feature">
                 <div className="feature__iconWrapper">
-                  <i className="feature__icon fa-regular fa-circle-play"></i>
+                  <FaCirclePlay />
                 </div>
                 <div className="feature__text">
                   <h4 className="feature__text__title">
@@ -41,7 +49,7 @@ const Features = () => {
                </div>
                <div className="feature">
                 <div className="feature__iconWrapper">
-                  <i className="feature__icon fa-solid fa-bars-staggered"></i>
+                  <FaBarsStaggered />
                 </div>
                 <div className="feature__text">
                   <h4 className="feature__text__title">
@@ -54,7 +62,7 @@ const Features = () => {
                </div>
                <div className="feature">
                 <div className="feature__iconWrapper">
-                  <i className="feature__icon fa-solid fa-mobile"></i>
+                  <FaMobile />
                 </div>
                 <div className="feature__text">
                   <h4 className="feature__text__title">
@@ -67,7 +75,7 @@ const Features = () => {
                </div>
                <div className="feature">
                 <div className="feature__iconWrapper">
-                  <i className="feature__icon fa-solid fa-shield"></i>
+                  <FaShield />
                 </div>
                 <div className="feature__text">
                   <h4 className="feature__text__title">
@@ -80,7 +88,7 @@ const Features = () => {
                </div>
                <div className="feature">
                 <div className="feature__iconWrapper">
-                  <i className="feature__icon fa-solid fa-hands-holding-circle"></i>
+                  <FaHandsHoldingCircle />
                 </div>
                 <div className="feature__text">
                   <h4 className="feature__text__title">

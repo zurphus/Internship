@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/landing/Footer.css'
+import logo from "../../assets/logo-light.png"
 
 const Footer = () => {
   return (
@@ -31,7 +32,7 @@ const Footer = () => {
       </section>
       <section id="links">
          <div className="links__container">
-          <img src="assets/logo-light.png" alt="" className="links__logo" />
+          <img src={logo} alt="" className="links__logo" />
           <div className="links__list">
             <a className="links__link" href="#">
               <i className="fa-brands fa-instagram links__link__icon"></i>

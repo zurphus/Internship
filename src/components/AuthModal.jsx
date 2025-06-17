@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import "../styles/AuthModal.css"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
+import { IoIosClose } from "react-icons/io";
 
 const AuthModal = () => {
 
@@ -87,7 +88,7 @@ const AuthModal = () => {
         <>
           <div onClick={closeAuthModal} className="auth-modal-background"></div>
           <div className={`auth-modal ${logInOrSignUp ? 'auth-modal-login' : 'auth-modal-sign-up'}`}>
-            <button onClick={closeAuthModal} className='auth-modal__close-btn'>Close</button>
+            <button onClick={closeAuthModal} className='auth-modal__close-btn'><IoIosClose /></button>
 
             <h3>{logInOrSignUp ? 'Log In' : 'Sign Up'}</h3>
 

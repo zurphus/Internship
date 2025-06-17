@@ -1,5 +1,8 @@
 import React from 'react'
 import '../../styles/landing/Testimonials.css'
+import image1 from "../../assets/testimonial-1.png"
+import image2 from "../../assets/testimonial-2.png"
+import image3 from "../../assets/testimonial-3.png"
 
 const Testimonials = () => {
   return (
@@ -18,7 +21,7 @@ const Testimonials = () => {
             </h2>
             <div className="testimonials__list">
               <div className="testimonial">
-                <img src="assets/testimonial-1.png" alt="" className="testimonial__img" />
+                <img src={image1} alt="" className="testimonial__img" />
                 <span className="testimonial__name">
                   Olivia Chapman
                 </span>
@@ -30,7 +33,7 @@ const Testimonials = () => {
                 </p>
               </div>
               <div className="testimonial">
-                <img src="assets/testimonial-2.png" alt="" className="testimonial__img" />
+                <img src={image2} alt="" className="testimonial__img" />
                 <span className="testimonial__name">
                   Eric Fisherman
                 </span>
@@ -42,7 +45,7 @@ const Testimonials = () => {
                 </p>
               </div>
               <div className="testimonial">
-                <img src="assets/testimonial-3.png" alt="" className="testimonial__img" />
+                <img src={image3} alt="" className="testimonial__img" />
                 <span className="testimonial__name">
                   Anisong Silkum
                 </span>

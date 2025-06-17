@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/landing/Summary.css'
+import summaryImg from "../../assets/summary.png"
 
 
 const Summary = () => {
@@ -23,7 +24,7 @@ const Summary = () => {
               </p>
             </div>
             <figure className="summary__figure">
-              <img src="assets/summary.png" alt="" className="summary__figure__img" />
+              <img src={summaryImg} alt="" className="summary__figure__img" />
               <span className="summary__figure__caption1">
                 Search. Summarise. Repeat.
               </span>
