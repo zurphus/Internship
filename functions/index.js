@@ -24,4 +24,4 @@ app.post('/createCheckoutSession', async (req, res) => {
 })
 
 // Export Express app as a Firebase Function
-exports.createCheckoutSession = functions.https.onRequest(app)
+exports.api = functions.https.onRequest(app)
