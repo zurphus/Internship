@@ -36,8 +36,8 @@ const Plans = () => {
     setActiveIndex(prevIndex => (prevIndex === index ? null : index))
   }
 
-  const monthlyPriceId = 'price_monthly123'
-  const yearlyPriceId = 'price_yearly456'
+  const monthlyPriceId = 'price_1RZsRCP07fN40ljCQ2NmQsAa'
+  const yearlyPriceId = 'price_1RZsSaP07fN40ljCDSY1jFuK'
 
   async function handleSubscribe(priceId) {
     try {
