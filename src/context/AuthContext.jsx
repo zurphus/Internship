@@ -11,7 +11,7 @@ import {
   getAuth,
   signInAnonymously,
 } from 'firebase/auth'
-import { getFirestore, doc, setDoc, serverTimestamp } from 'firebase/firestore'
+import { getFirestore, doc, setDoc, serverTimestamp, updateDoc, arrayUnion, arrayRemove, getDoc } from 'firebase/firestore'
 
 // Firestore init
 const db = getFirestore()
@@ -89,6 +89,58 @@ export function AuthProvider({ children }) {
     return unsubscribe
   }, [])
 
+    //favorites
+  async function addToFavorites(movie) {
+    if (!currentUser) {
+      console.log('User not logged in.')
+      return
+    }
+
+    const userDocRef = doc(db, 'users', currentUser.uid)
+
+    try {
+      await updateDoc(userDocRef, {
+        favorites: arrayUnion(movie) // you can also store movie.id if you want
+      })
+      console.log('Movie added to favorites!')
+    } catch (error) {
+      console.error('Error adding favorite: ', error)
+    }
+  }
+
+  //remove favorites
+  async function removeFromFavorites(movie) {
+    if (!currentUser) return
+
+    const userDocRef = doc(db, 'users', currentUser.uid)
+
+    try {
+      await updateDoc(userDocRef, {
+        favorites: arrayRemove(movie)
+      })
+      console.log('Movie removed from favorites')
+    } catch (error) {
+      console.error('Error removing from favorites:', error)
+    }
+  }
+
+  // Get favorites
+  async function getFavorites() {
+    if (!currentUser) return []
+
+    const userDocRef = doc(db, 'users', currentUser.uid)
+
+    try {
+      const userSnap = await getDoc(userDocRef)
+      const userData = userSnap.data()
+
+      return userData?.favorites || []
+    } catch (error) {
+      console.error('Error fetching favorites:', error)
+      return []
+    }
+  }
+
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
   const openAuthModal = () => setIsAuthModalOpen(true)
@@ -105,6 +157,9 @@ export function AuthProvider({ children }) {
     openAuthModal,
     closeAuthModal,
     loginAsGuest,
+    addToFavorites,
+    removeFromFavorites,
+    getFavorites,
   }
 
   return (

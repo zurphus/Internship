@@ -6,6 +6,10 @@ import SkeletonCarousel from './SkeletonCarousel'
 import '../styles/SkeletonCarousel.css'
 import { Link } from 'react-router-dom'
 
+import { FaRegStar } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa6";
+import { MdDateRange } from "react-icons/md";
+
 const EmblaCarousel = ({ movies, options }) => {
   const [emblaRef] = useEmblaCarousel(options)
 
@@ -63,8 +67,14 @@ const EmblaCarousel = ({ movies, options }) => {
                   <h4>{movie.title}</h4>
                   <p>{movie.director}</p>
                   <div className='movie-ratings'>
-                    <p>{movie.rating}</p>
-                    <p>{movie.releaseYear}</p>
+                    <div>
+                      <FaRegStar />
+                      <p>{movie.rating}</p>
+                    </div>
+                    <div>
+                      <MdDateRange />
+                      <p>{movie.releaseYear}</p>
+                    </div>
                   </div>
                   {movie.subscriptionRequired && <span className="premium-tag">Premium</span>} 
                 </div>

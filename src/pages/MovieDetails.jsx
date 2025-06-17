@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
+import { FaBookmark } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
@@ -18,35 +19,50 @@ import { AuthContext } from '../context/AuthContext'
 
 const MovieDetails = () => {
 
-  const { openAuthModal, currentUser } = useContext(AuthContext)
+  const { openAuthModal, currentUser, addToFavorites, removeFromFavorites } = useContext(AuthContext)
 
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
+  const [isFavorite, setIsFavorite] = useState(false)
 
   useEffect(() => {
     console.log(id)
   }, [])
 
   useEffect(() => {
-  const fetchMovie = async () => {
-    try {
-      const res = await fetch('https://advanced-internship-api-production.up.railway.app/selectedMovies')
-      const data = await res.json()
-      const allMovies = data.data
+    const fetchMovie = async () => {
+      try {
+        const res = await fetch('https://advanced-internship-api-production.up.railway.app/selectedMovies')
+        const data = await res.json()
+        const allMovies = data.data
 
-      const foundMovie = allMovies.find(m => m.id === id)
+        const foundMovie = allMovies.find(m => m.id === id)
 
-      console.log("Found Movie:", foundMovie)
-      setMovie(foundMovie)
-    } catch (error) {
-      console.error("Error fetching movie:", error)
+        console.log("Found Movie:", foundMovie)
+        setMovie(foundMovie)
+      } catch (error) {
+        console.error("Error fetching movie:", error)
+      }
     }
-  }
 
-  fetchMovie()
-}, [id])
+    fetchMovie()
+  }, [id])
 
+  useEffect(() => {
+    const checkIfFavorite = async () => {
+      if (!currentUser) return
 
+      const userDocRef = doc(db, 'users', currentUser.uid)
+      const userSnap = await getDoc(userDocRef)
+      const userData = userSnap.data()
+
+      const favorites = userData?.favorites || []
+      const found = favorites.some(fav => fav.id === id)
+      setIsFavorite(found)
+    }
+
+    checkIfFavorite()
+  }, [currentUser, id])
 
   return (
     <>
@@ -103,7 +119,21 @@ const MovieDetails = () => {
                 )
               }
               
-              <button className='movie__details__favorites'><FaRegBookmark className='movie__details__favorites-icon' /> Add to Favourites</button>
+              <button
+                onClick={async () => {
+                  if (isFavorite) {
+                    await removeFromFavorites(movie)
+                  } else {
+                    await addToFavorites(movie)
+                  }
+                  setIsFavorite(prev => !prev)
+                }}
+                className='movie__details__favorites'
+              >
+                {isFavorite ? <FaBookmark className='movie__details__favorites-icon' /> : <FaRegBookmark className='movie__details__favorites-icon' />}
+                {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              </button>
+              
               <div className="movie__details__content">
               <h3>What's it about?</h3>
               <div className="movie__details__tags">

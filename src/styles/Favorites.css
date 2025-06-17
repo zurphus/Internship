@@ -1,0 +1,13 @@
+.favorites-all{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    p{
+        color: var(--light-gray);
+    }
+    img{
+        border-radius: 15px;
+    }
+}
