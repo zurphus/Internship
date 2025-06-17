@@ -3,6 +3,8 @@ import "../styles/AuthModal.css"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import { IoIosClose } from "react-icons/io";
+import { FaUser } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
 
 const AuthModal = () => {
 
@@ -94,8 +96,8 @@ const AuthModal = () => {
 
             {error && <p className="error">{error}</p>}
 
-            <button className='auth-modal__login-btn' onClick={handleGoogleLogin}>Login with Google</button>
-            <button className='auth-modal__login-btn' onClick={handleGuestLogin}>Login as Guest</button>
+            <button className='auth-modal__login-btn' onClick={handleGoogleLogin}><FcGoogle />Login with Google</button>
+            <button className='auth-modal__login-btn' onClick={handleGuestLogin}><FaUser />Login as Guest</button>
 
             <div className="auth-modal__or-wrap">
               <div></div>

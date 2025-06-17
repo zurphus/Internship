@@ -1,9 +1,10 @@
 .favorites-all{
-    margin-top: 30px;
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
     gap: 15px;
+    max-width: 1420px;
+    margin: 30px auto auto auto;
 
     p{
         color: var(--light-gray);
