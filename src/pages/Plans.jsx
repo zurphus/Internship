@@ -7,6 +7,7 @@ import { loadStripe } from '@stripe/stripe-js'
 
 import { FaCheck } from "react-icons/fa6";
 import { LuPlus } from "react-icons/lu";
+import { CiGlass } from 'react-icons/ci'
 
 
 
@@ -40,6 +41,7 @@ const Plans = () => {
   const yearlyPriceId = 'price_1RZsSaP07fN40ljCDSY1jFuK'
 
   async function handleSubscribe(priceId) {
+    console.log(priceId)
     try {
       const response = await fetch('https://us-central1-hollywood-ai-6bb5b.cloudfunctions.net/api/createCheckoutSession', {
         method: 'POST',

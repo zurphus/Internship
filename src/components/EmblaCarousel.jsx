@@ -62,8 +62,10 @@ const EmblaCarousel = ({ movies, options }) => {
                 <div className="movie-info">
                   <h4>{movie.title}</h4>
                   <p>{movie.director}</p>
-                  <p>Rating: {movie.rating}</p>
-                  <p>Year: {movie.releaseYear}</p>
+                  <div className='movie-ratings'>
+                    <p>{movie.rating}</p>
+                    <p>{movie.releaseYear}</p>
+                  </div>
                   {movie.subscriptionRequired && <span className="premium-tag">Premium</span>} 
                 </div>
               </Link>
