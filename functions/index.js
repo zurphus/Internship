@@ -2,7 +2,6 @@ const functions = require('firebase-functions')
 const stripe = require('stripe')(functions.config().stripe.secret)
 
 exports.createCheckoutSession = functions
-  .runWith({ memory: '256MB' }) // Optional: configure runtime settings
   .region('us-central1')
   .https
   .onRequest(async (req, res) => {
