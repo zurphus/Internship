@@ -1,8 +1,7 @@
 const functions = require('firebase-functions')
 const stripe = require('stripe')(functions.config().stripe.secret)
 
-exports.createCheckoutSession = functions.https.onRequest(async (req, res) => {
-
+exports.createCheckoutSession = functions.region('us-central1').https.onRequest(async (req, res) => {
   res.set('Access-Control-Allow-Origin', '*')
   res.set('Access-Control-Allow-Headers', 'Content-Type')
 
