@@ -1,11 +1,23 @@
 const functions = require('firebase-functions')
-const express = require('express')
 const stripe = require('stripe')(functions.config().stripe.secret)
 
-const app = express()
-app.use(express.json())
+// Create Checkout Session without Express
+exports.createCheckoutSession = functions.https.onRequest(async (req, res) => {
+  // Enable CORS
+  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Headers', 'Content-Type')
 
-app.post('/createCheckoutSession', async (req, res) => {
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.status(204).send('')
+    return
+  }
+
+  if (req.method !== 'POST') {
+    res.status(405).send({ error: 'Only POST requests are allowed' })
+    return
+  }
+
   const { priceId } = req.body
 
   try {
@@ -17,11 +29,9 @@ app.post('/createCheckoutSession', async (req, res) => {
       cancel_url: 'https://internship-sooty-one.vercel.app/cancel',
     })
 
-    res.json({ sessionId: session.id })
+    res.status(200).json({ sessionId: session.id })
   } catch (error) {
+    console.error(error)
     res.status(400).json({ error: error.message })
   }
 })
-
-// Export Express app as a Firebase Function
-exports.api = functions.https.onRequest(app)
