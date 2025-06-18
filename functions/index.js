@@ -1,37 +1,39 @@
 const functions = require('firebase-functions')
 const stripe = require('stripe')(functions.config().stripe.secret)
 
-// Create Checkout Session without Express
-exports.createCheckoutSession = functions.https.onRequest(async (req, res) => {
-  // Enable CORS
-  res.set('Access-Control-Allow-Origin', '*')
-  res.set('Access-Control-Allow-Headers', 'Content-Type')
+exports.createCheckoutSession = functions
+  .runWith({ memory: '256MB' }) // Optional: configure runtime settings
+  .region('us-central1')
+  .https
+  .onRequest(async (req, res) => {
 
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    res.status(204).send('')
-    return
-  }
+    res.set('Access-Control-Allow-Origin', '*')
+    res.set('Access-Control-Allow-Headers', 'Content-Type')
 
-  if (req.method !== 'POST') {
-    res.status(405).send({ error: 'Only POST requests are allowed' })
-    return
-  }
+    if (req.method === 'OPTIONS') {
+      res.status(204).send('')
+      return
+    }
 
-  const { priceId } = req.body
+    if (req.method !== 'POST') {
+      res.status(405).send({ error: 'Only POST requests are allowed' })
+      return
+    }
 
-  try {
-    const session = await stripe.checkout.sessions.create({
-      mode: 'subscription',
-      payment_method_types: ['card'],
-      line_items: [{ price: priceId, quantity: 1 }],
-      success_url: 'https://internship-sooty-one.vercel.app/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://internship-sooty-one.vercel.app/cancel',
-    })
+    const { priceId } = req.body
 
-    res.status(200).json({ sessionId: session.id })
-  } catch (error) {
-    console.error(error)
-    res.status(400).json({ error: error.message })
-  }
-})
+    try {
+      const session = await stripe.checkout.sessions.create({
+        mode: 'subscription',
+        payment_method_types: ['card'],
+        line_items: [{ price: priceId, quantity: 1 }],
+        success_url: 'https://internship-sooty-one.vercel.app/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://internship-sooty-one.vercel.app/cancel',
+      })
+
+      res.status(200).json({ sessionId: session.id })
+    } catch (error) {
+      console.error(error)
+      res.status(400).json({ error: error.message })
+    }
+  })
