@@ -16,6 +16,7 @@ import { FaRegBookmark } from "react-icons/fa6";
 import { HiLightningBolt } from "react-icons/hi";
 
 import { AuthContext } from '../context/AuthContext'
+import { getSubscriptionStatus } from '../stripe/getPremiumStatus'
 
 const MovieDetails = () => {
 
@@ -64,6 +65,19 @@ const MovieDetails = () => {
     checkIfFavorite()
   }, [currentUser, id])
 
+
+  const [isPremium, setIsPremium] = useState(false)
+  
+    useEffect(() => {
+      const checkPremiumStatus = async () => {
+        const premiumStatus = await getSubscriptionStatus()
+        console.log(premiumStatus)
+        setIsPremium(premiumStatus)
+      }
+  
+      checkPremiumStatus()
+    }, [])
+
   return (
     <>
       <div className='movie page'>
@@ -100,11 +114,17 @@ const MovieDetails = () => {
               {
                 currentUser ? (
                   movie.subscriptionRequired ? (
-                    <Link to="/plans" className="cta-btn">
-                      {/* another condition if user has premium */}
-                      Subscribe to Summarize
-                      <HiLightningBolt />
-                    </Link>
+                    isPremium ? (
+                      <Link to={`/player/${movie.id}`} className="cta-btn">
+                        Summarize
+                        <HiLightningBolt />
+                      </Link>
+                    ) : (
+                      <Link to="/plans" className="cta-btn">
+                        Subscribe to Summarize
+                        <HiLightningBolt />
+                      </Link>
+                    )
                   ) : (
                     <Link to={`/player/${movie.id}`} className="cta-btn">
                       Summarize
