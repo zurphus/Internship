@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { auth } from '../firebase/firebase'
 import "../styles/Plans.css"
 import SearchBar from '../components/Searchbar'
 import Sidebar from '../components/Sidebar'
@@ -8,8 +9,10 @@ import { loadStripe } from '@stripe/stripe-js'
 import { FaCheck } from "react-icons/fa6";
 import { LuPlus } from "react-icons/lu";
 import { CiGlass } from 'react-icons/ci'
+import { loadCheckout, loadPortal } from '../stripe/stripePayment'
+import { getSubscriptionStatus } from '../stripe/getPremiumStatus'
 
-
+import { useNavigate } from 'react-router-dom'
 
 const accordionData = [
   {
@@ -30,7 +33,9 @@ const stripePromise = loadStripe('pk_test_51RZsOCP07fN40ljCsKT7ImGPaZZ1XSITv6izp
 
 const Plans = () => {
 
+  const navigate = useNavigate()
   const [activeIndex, setActiveIndex] = useState(null)
+  const [isPremium, setIsPremium] = useState(false)
   const refs = useRef([])
 
   const toggleAccordion = index => {
@@ -40,25 +45,28 @@ const Plans = () => {
   const monthlyPriceId = 'price_1RZsRCP07fN40ljCQ2NmQsAa'
   const yearlyPriceId = 'price_1RZsSaP07fN40ljCDSY1jFuK'
 
-  async function handleSubscribe(priceId) {
-    console.log(priceId)
-    try {
-      const response = await fetch('https://us-central1-hollywood-ai-6bb5b.cloudfunctions.net/api/createCheckoutSession', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId }),
-      })
-
-      const { sessionId } = await response.json()
-      const stripe = await stripePromise
-      const { error } = await stripe.redirectToCheckout({ sessionId })
-
-      if (error) alert(error.message)
-    } catch (error) {
-      alert("failed, error", error)
-      console.log(error)
-    }
+  const upgradeToPremium = async (priceId) => {
+    loadCheckout(priceId)
   }
+
+  useEffect(() => {
+    const checkPremiumStatus = async () => {
+      const premiumStatus = await getSubscriptionStatus()
+      setIsPremium(premiumStatus)
+    }
+
+    checkPremiumStatus()
+  }, [auth.currentUser])
+
+  // const upgrade = async (priceId) => {
+  //   loadCheckout(priceId)
+  // }
+
+  useEffect(() => {
+    if(isPremium) {
+      navigate('/settings')
+    }
+  }, [isPremium])
 
   return (
     <div className='plans page'>
@@ -102,7 +110,7 @@ const Plans = () => {
                 <p className="plan__feature__text">2 Supported Devices</p>
               </div>
             </div>
-            <button onClick={() => handleSubscribe(monthlyPriceId)} className='cta-btn'>Choose Plan</button>
+            <button onClick={() => upgradeToPremium(monthlyPriceId)} className='cta-btn'>Choose Plan</button>
           </div>
           <div className="plans__subscription__col">
             <div className="plan__price">
@@ -133,7 +141,7 @@ const Plans = () => {
                 <p className="plan__feature__text">3 Supported Devices</p>
               </div>
             </div>
-            <button onClick={() => handleSubscribe(yearlyPriceId)} className='cta-btn'>Choose Plan</button>
+            <button onClick={() => upgradeToPremium(yearlyPriceId)} className='cta-btn'>Choose Plan</button>
           </div>
         </div>
       </div>
