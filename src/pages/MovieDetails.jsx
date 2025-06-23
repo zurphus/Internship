@@ -18,9 +18,10 @@ import { HiLightningBolt } from "react-icons/hi";
 import { AuthContext } from '../context/AuthContext'
 import { getSubscriptionStatus } from '../stripe/getPremiumStatus'
 
+
 const MovieDetails = () => {
 
-  const { openAuthModal, currentUser, addToFavorites, removeFromFavorites } = useContext(AuthContext)
+  const { getFavorites, openAuthModal, currentUser, addToFavorites, removeFromFavorites } = useContext(AuthContext)
 
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
@@ -31,39 +32,38 @@ const MovieDetails = () => {
   }, [])
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        const res = await fetch('https://advanced-internship-api-production.up.railway.app/selectedMovies')
-        const data = await res.json()
-        const allMovies = data.data
+  const fetchMovie = async () => {
+    try {
+      const res = await fetch(`https://advanced-internship-api-production.up.railway.app/movies/${id}`)
+      const data = await res.json()
 
-        const foundMovie = allMovies.find(m => m.id === id)
-
-        console.log("Found Movie:", foundMovie)
-        setMovie(foundMovie)
-      } catch (error) {
-        console.error("Error fetching movie:", error)
-      }
+      console.log("Fetched Movie:", data)
+      setMovie(data.data)
+    } catch (error) {
+      console.error("Error fetching movie:", error)
     }
+  }
 
-    fetchMovie()
-  }, [id])
+  fetchMovie()
+}, [id])
+
 
   useEffect(() => {
     const checkIfFavorite = async () => {
       if (!currentUser) return
 
-      const userDocRef = doc(db, 'users', currentUser.uid)
-      const userSnap = await getDoc(userDocRef)
-      const userData = userSnap.data()
-
-      const favorites = userData?.favorites || []
-      const found = favorites.some(fav => fav.id === id)
-      setIsFavorite(found)
+      try {
+        const favorites = await getFavorites()
+        const found = favorites.some(fav => fav.id === id)
+        setIsFavorite(found)
+      } catch (error) {
+        console.error("Error checking favorites:", error)
+      }
     }
 
     checkIfFavorite()
   }, [currentUser, id])
+
 
 
   const [isPremium, setIsPremium] = useState(false)

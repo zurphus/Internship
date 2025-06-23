@@ -4,6 +4,11 @@ import SearchBar from '../components/Searchbar'
 import Sidebar from '../components/Sidebar'
 import { AuthContext } from '../context/AuthContext'
 import { useParams } from 'react-router-dom'
+import { IoMdPlay } from "react-icons/io";
+import { IoIosPause } from "react-icons/io";
+import { IoIosFastforward } from "react-icons/io";
+// import { CiPause1 } from 'react-icons/ci'
+
 
 const MoviePlayer = () => {
   const { openAuthModal, currentUser } = useContext(AuthContext)
@@ -23,12 +28,9 @@ const MoviePlayer = () => {
     const fetchMovie = async () => {
       try {
         setLoading(true)
-        const res = await fetch('https://advanced-internship-api-production.up.railway.app/selectedMovies')
+        const res = await fetch(`https://advanced-internship-api-production.up.railway.app/movies/${id}`)
         const data = await res.json()
-        const allMovies = data.data
-
-        const foundMovie = allMovies.find(m => m.id === id)
-        setMovie(foundMovie)
+        setMovie(data.data)
       } catch (error) {
         console.error("Error fetching movie:", error)
       } finally {
@@ -38,6 +40,7 @@ const MoviePlayer = () => {
 
     fetchMovie()
   }, [id])
+
 
   const togglePlay = () => {
     if (!audioRef.current) return
@@ -96,9 +99,6 @@ const MoviePlayer = () => {
     setCurrentTime(newTime)
   }
 
-  if (loading) return <div>Loading...</div>
-  if (!movie) return <div>Movie not found</div>
-
   return (
     <div className='player page'>
       <Sidebar />
@@ -127,11 +127,11 @@ const MoviePlayer = () => {
                 </div>
               </div>
               <div className="player__bar__controls">
-                <button onClick={() => skipTime(-10)}>⏪</button>
+                <button style={{ transform: "rotate(180deg)" }} onClick={() => skipTime(-10)}><IoIosFastforward className='player__bar__fast-forward' /></button>
                 <button onClick={togglePlay}>
-                  {isPlaying ? '⏸' : '▶️'}
+                  {isPlaying ? <IoIosPause className='player__bar__toggle' /> : <IoMdPlay className='player__bar__toggle' />}
                 </button>
-                <button onClick={() => skipTime(10)}>⏩</button>
+                <button onClick={() => skipTime(10)}><IoIosFastforward className='player__bar__fast-forward' /></button>
               </div>
 
               <div className="player__bar__timer">
