@@ -136,6 +136,20 @@
     height: fit-content !important;
     max-height: fit-content !important;
 }
+@keyframes spin {
+  0% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(340deg);
+  }
+}
+
+.spinner-icon {
+  animation: spin 1s ease-in-out infinite;
+  font-size: 1.3rem;
+  transform: rotate(-20deg);
+}
 
 
 @media screen and (max-width: 650px) {

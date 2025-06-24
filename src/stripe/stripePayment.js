@@ -23,7 +23,7 @@ export const loadCheckout = async (priceId) => {
       price: priceId,
       allow_promotion_codes: true,
       success_url: window.location.href,
-      cancel_url: window.location.href,
+      cancel_url: `${window.location.origin}/dashboard`,
     });
 
     // Reference to the checkout session document we just created

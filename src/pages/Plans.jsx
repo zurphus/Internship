@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar'
 
 import { loadStripe } from '@stripe/stripe-js'
 
+import { ImSpinner8 } from "react-icons/im";
 import { FaCheck } from "react-icons/fa6";
 import { LuPlus } from "react-icons/lu";
 import { CiGlass } from 'react-icons/ci'
@@ -36,6 +37,8 @@ const Plans = () => {
   const navigate = useNavigate()
   const [activeIndex, setActiveIndex] = useState(null)
   const [isPremium, setIsPremium] = useState(false)
+  const [buttonClicked1, setButtonClicked1] = useState(false)
+  const [buttonClicked2, setButtonClicked2] = useState(false)
   const refs = useRef([])
 
   const toggleAccordion = index => {
@@ -58,9 +61,10 @@ const Plans = () => {
     checkPremiumStatus()
   }, [auth.currentUser])
 
-  // const upgrade = async (priceId) => {
-  //   loadCheckout(priceId)
-  // }
+  useEffect(() => {
+    setButtonClicked1(false)
+    setButtonClicked2(false)
+  }, [])
 
   useEffect(() => {
     if(isPremium) {
@@ -110,7 +114,9 @@ const Plans = () => {
                 <p className="plan__feature__text">2 Supported Devices</p>
               </div>
             </div>
-            <button onClick={() => upgradeToPremium(monthlyPriceId)} className='cta-btn'>Choose Plan</button>
+            <button onClick={() => { upgradeToPremium(monthlyPriceId), setButtonClicked1(true)}} className='cta-btn'>
+              {buttonClicked1 ? <ImSpinner8 className='spinner-icon'/> : "Choose Plan"}
+            </button>
           </div>
           <div className="plans__subscription__col">
             <div className="plan__price">
@@ -141,7 +147,9 @@ const Plans = () => {
                 <p className="plan__feature__text">3 Supported Devices</p>
               </div>
             </div>
-            <button onClick={() => upgradeToPremium(yearlyPriceId)} className='cta-btn'>Choose Plan</button>
+            <button onClick={() => { upgradeToPremium(yearlyPriceId), setButtonClicked2(true) }} className='cta-btn'>
+              {buttonClicked2 ? <ImSpinner8 className='spinner-icon'/> : "Choose Plan"}
+            </button>
           </div>
         </div>
       </div>
